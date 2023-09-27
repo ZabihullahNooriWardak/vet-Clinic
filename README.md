@@ -29,7 +29,7 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 [Vet clinic] <a name="about-project"></a>
 
 this project is about database for clinic with postgre SQL RDBMS
 
@@ -115,8 +115,6 @@ If you like this project you can contribute to this project.
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 I would like to thank Microverse for giving us opportunity to learn 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
