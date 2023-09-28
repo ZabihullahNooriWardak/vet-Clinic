@@ -145,32 +145,27 @@ WHERE
     (neutered = false);
 
 SELECT
-    MIN(weigth)
+    species,
+    MIN(weight_kg),
+    MAX(weight_kg)
 FROM
     animals
 WHERE
-    (neutered = true);
+    (neutered = true)
+GROUP BY
+    species;
+
 
 SELECT
-    MAX(weigth_kg)
+    species,
+    MIN(weight_kg),
+    MAX(weight_kg)
 FROM
     animals
 WHERE
-    (neutered = true);
-
-SELECT
-    MAX(weigth_kg)
-FROM
-    animals
-WHERE
-    (neutered = FALSE);
-
-SELECT
-    MIN(weigth_kg)
-FROM
-    animals
-WHERE
-    (neutered = FALSE);
+    (neutered = false)
+GROUP BY
+    species;
 
 SELECT
     neutered,
