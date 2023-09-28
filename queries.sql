@@ -170,3 +170,42 @@ WHERE
     AND '2000-12-31'
 GROUP BY
     neutered;
+
+/* Now, take a deep breath and... Inside a transaction delete all
+ records in the animals table, then roll back the transaction. */
+begin;
+
+DELETE FROM
+    animals;
+
+rollback;
+
+select
+    *
+from
+    animals;
+
+/* Inside a transaction:
+ Delete all animals born after Jan 1st, 2022. */
+begin;
+
+Delete FROM
+    animals
+WHERE
+    (date_of_birth > '2022-01-01');
+
+SAVEPOINT deleteNewAnimals;
+
+UPDATE
+    animals
+SET
+    weigth_kg = weigth_kg *(-1);
+
+ROLLBACK deleteNewAnimals;
+
+UPDATE
+    animals
+SET
+    weigth_kg = weigth_kg *(-1);
+
+commit;
