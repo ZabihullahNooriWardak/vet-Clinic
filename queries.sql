@@ -131,18 +131,12 @@ from
     animals;
 
 SELECT
-    SUM(escape_attempts)
+    neutered,
+    MAX(escape_attempts)
 FROM
     animals
-WHERE
-    (neutered = true);
-
-SELECT
-    SUM(escape_attempts)
-FROM
-    animals
-WHERE
-    (neutered = false);
+GROUP BY
+    neutered;
 
 SELECT
     species,
@@ -154,7 +148,6 @@ WHERE
     (neutered = true)
 GROUP BY
     species;
-
 
 SELECT
     species,
