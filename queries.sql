@@ -59,3 +59,153 @@ FROM
 WHERE
     (weigth_kg >= 10.4)
     AND (weigth_kg <= 17.3);
+
+begin;
+
+UPDATE
+    animals
+SET
+    species = 'unspecified';
+
+select
+    *
+from
+    animals;
+
+rollback;
+
+select
+    *
+from
+    animals;
+
+begin;
+
+UPDATE
+    animals
+SET
+    species = 'digimon'
+WHERE
+    name LIKE '%mon';
+
+select
+    *
+from
+    animals;
+
+UPDATE
+    animals
+SET
+    species = 'pokemon'
+WHERE
+    species IS NULL
+    OR species = '';
+
+select
+    *
+from
+    animals;
+
+commit;
+
+select
+    *
+from
+    animals;
+
+SELECT
+    COUNT(*)
+FROM
+    animals;
+
+SELECT
+    COUNT(*)
+FROM
+    animals
+WHERE
+    (escape_attempts = 0);
+
+SELECT
+    AVG(weigth_kg)
+from
+    animals;
+
+SELECT
+    neutered,
+    MAX(escape_attempts)
+FROM
+    animals
+GROUP BY
+    neutered;
+
+SELECT
+    species,
+    MIN(weight_kg),
+    MAX(weight_kg)
+FROM
+    animals
+WHERE
+    (neutered = true)
+GROUP BY
+    species;
+
+SELECT
+    species,
+    MIN(weight_kg),
+    MAX(weight_kg)
+FROM
+    animals
+WHERE
+    (neutered = false)
+GROUP BY
+    species;
+
+SELECT
+    neutered,
+    AVG(escape_attempts) as avg_attempts
+FROM
+    animals
+WHERE
+    date_of_birth BETWEEN '1990-01-01'
+    AND '2000-12-31'
+GROUP BY
+    neutered;
+
+/* Now, take a deep breath and... Inside a transaction delete all
+ records in the animals table, then roll back the transaction. */
+begin;
+
+DELETE FROM
+    animals;
+
+rollback;
+
+select
+    *
+from
+    animals;
+
+/* Inside a transaction:
+ Delete all animals born after Jan 1st, 2022. */
+begin;
+
+Delete FROM
+    animals
+WHERE
+    (date_of_birth > '2022-01-01');
+
+SAVEPOINT deleteNewAnimals;
+
+UPDATE
+    animals
+SET
+    weigth_kg = weigth_kg *(-1);
+
+ROLLBACK deleteNewAnimals;
+
+UPDATE
+    animals
+SET
+    weigth_kg = weigth_kg *(-1);
+
+commit;
