@@ -214,7 +214,7 @@ SELECT
     a.name
 FROM
     animals a
-    JOIN vets v ON a.owner_id = v.id
+    JOIN owners v ON a.owner_id = v.id
 WHERE
     v.full_name = 'Melody';
 
@@ -230,7 +230,7 @@ SELECT
     v.full_name,
     a.name
 FROM
-    vets v
+    owners v
     LEFT JOIN animals a ON v.id = a.owner_id;
 
 SELECT
@@ -246,7 +246,7 @@ SELECT
     a.name
 FROM
     animals a
-    JOIN vets v ON a.owner_id = v.id
+    JOIN owners v ON a.owner_id = v.id
     JOIN species s ON a.species_id = s.id
 WHERE
     v.full_name = 'Jennifer Orwell'
@@ -256,7 +256,7 @@ SELECT
     a.name
 FROM
     animals a
-    JOIN vets v ON a.owner_id = v.id
+    JOIN owners v ON a.owner_id = v.id
 WHERE
     v.full_name = 'Dean Winchester'
     AND a.escape_attempts = 0;
@@ -266,7 +266,7 @@ SELECT
     COUNT(*) AS animal_count
 FROM
     animals a
-    JOIN vets v ON a.owner_id = v.id
+    JOIN owners v ON a.owner_id = v.id
 GROUP BY
     v.full_name
 ORDER BY
