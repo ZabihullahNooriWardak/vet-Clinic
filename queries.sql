@@ -216,7 +216,7 @@ FROM
     animals a
     JOIN owners v ON a.owner_id = v.id
 WHERE
-    v.full_name = 'Melody';
+    v.full_name = 'Melody Pond';
 
 SELECT
     a.name

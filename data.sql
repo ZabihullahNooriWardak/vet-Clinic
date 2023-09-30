@@ -91,32 +91,32 @@ VALUES
     ('Ditto', '2022-05-14', 4, true, -22.0);
 
 INSERT INTO
-    vets (full_name, age)
+    owners (full_name, age)
 VALUES
     ('Sam Smith', 34);
 
 INSERT INTO
-    vets (full_name, age)
+    owners (full_name, age)
 VALUES
     ('Jennifer Orwell', 19);
 
 INSERT INTO
-    vets (full_name, age)
+    owners (full_name, age)
 VALUES
     ('Bob', 45);
 
 INSERT INTO
-    vets (full_name, age)
+    owners (full_name, age)
 VALUES
     ('Melody Pond', 77);
 
 INSERT INTO
-    vets (full_name, age)
+    owners (full_name, age)
 VALUES
     ('Dean Winchester', 14);
 
 INSERT INTO
-    vets (full_name, age)
+    owners (full_name, age)
 VALUES
     ('Jodie Whittaker', 38);
 
@@ -159,7 +159,7 @@ SET
         SELECT
             owner_id
         from
-            vets
+            owners
         WHERE
             full_name = 'Sam Smith'
     )
@@ -173,7 +173,7 @@ SET
         SELECT
             owner_id
         from
-            vets
+            owners
         WHERE
             full_name = 'Jennifer Orwell'
     )
@@ -187,7 +187,7 @@ SET
         SELECT
             owner_id
         FROM
-            vets
+            owners
         WHERE
             full_name = 'Bob'
     )
@@ -201,9 +201,9 @@ SET
         SELECT
             owner_id
         FROM
-            vets
+            owners
         WHERE
-            full_name = 'Melody'
+            full_name = 'Melody Pond'
     )
 WHERE
     name IN ('Charmander', 'Squirtle', 'Blossom');
@@ -215,7 +215,7 @@ SET
         SELECT
             owner_id
         FROM
-            vets
+            owners
         WHERE
             full_name = 'Dean Winchester'
     )
