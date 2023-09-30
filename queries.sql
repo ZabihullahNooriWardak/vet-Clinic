@@ -209,3 +209,67 @@ SET
     weigth_kg = weigth_kg *(-1);
 
 commit;
+
+SELECT
+    a.name
+FROM
+    animals a
+    JOIN owners v ON a.owner_id = v.id
+WHERE
+    v.full_name = 'Melody Pond';
+
+SELECT
+    a.name
+FROM
+    animals a
+    JOIN species s ON a.species_id = s.id
+WHERE
+    s.name = 'Pokemon';
+
+SELECT
+    v.full_name,
+    a.name
+FROM
+    owners v
+    LEFT JOIN animals a ON v.id = a.owner_id;
+
+SELECT
+    s.name AS species_name,
+    COUNT(*) AS animal_count
+FROM
+    animals a
+    JOIN species s ON a.species_id = s.id
+GROUP BY
+    s.name;
+
+SELECT
+    a.name
+FROM
+    animals a
+    JOIN owners v ON a.owner_id = v.id
+    JOIN species s ON a.species_id = s.id
+WHERE
+    v.full_name = 'Jennifer Orwell'
+    AND s.name = 'Digimon';
+
+SELECT
+    a.name
+FROM
+    animals a
+    JOIN owners v ON a.owner_id = v.id
+WHERE
+    v.full_name = 'Dean Winchester'
+    AND a.escape_attempts = 0;
+
+SELECT
+    v.full_name AS owner_name,
+    COUNT(*) AS animal_count
+FROM
+    animals a
+    JOIN owners v ON a.owner_id = v.id
+GROUP BY
+    v.full_name
+ORDER BY
+    COUNT(*) DESC
+LIMIT
+    1;
